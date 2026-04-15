@@ -1,0 +1,11 @@
+cat <<EOF > /etc/zapret-firewall.nft
+#!/bin/sh
+nft insert rule inet fw4 mangle_postrouting meta mark 0x99 counter queue flags bypass to 200
+EOF
+
+chmod +x /etc/zapret-firewall.nft
+
+uci set firewall.zapret_include=include
+uci set firewall.zapret_include.type='script'
+uci set firewall.zapret_include.path='/etc/zapret-firewall.nft'
+uci commit firewall
