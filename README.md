@@ -1,3 +1,7 @@
+# Настройка интеграции
+
+Команды терминала для межсетевого экрана
+
 ```bash
 cat <<EOF > /etc/zapret-firewall.nft
 #!/bin/sh
@@ -18,15 +22,14 @@ uci commit firewall
 
 В настройках Zapret выставить
 
-Указанный порт должен отличаться от часто используемых, например 12345
-
 ```bash
 FILTER_MARK = 0x99
 NFQWS_PORTS_TCP = ваш порт
 NFQWS_PORTS_UDP = ваш порт
 ```
+Указанный порт должен отличаться от часто используемых, например 12345
 
-***Блок для интеграции Zapret от Remmitor для OpenWRT в Podkop от ITDog***
+# Блок для интеграции в Podkop от ITDog
 
 ```bash
 {
